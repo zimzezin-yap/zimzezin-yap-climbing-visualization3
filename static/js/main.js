@@ -257,13 +257,12 @@
             tooltip.style.top = `${event.clientY + offset}px`;
         }
 
-        function showTooltip({ athlete, problem, attempt, limb }, event) {
+        function showTooltip({ athlete, problem, attempt}, event) {
             tooltip.textContent = '';
             const lines = [
                 { label: '', value: athlete || '' },
                 { label: 'problem', value: problem || '' },
                 { label: 'attempt', value: attempt || '' },
-                { label: 'limb', value: limb || '' }
             ];
 
             lines.forEach(({ label, value }, idx) => {
