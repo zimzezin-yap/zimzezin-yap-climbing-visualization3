@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    background: #ffffff;
+    overflow: hidden; /* 필요하면 스크롤 막기 */
+}
+
+/* 위쪽 200px 박스 - 화면 상단에 고정 */
+.top-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background: linear-gradient(to bottom, rgba(104, 104, 104, 0.7), rgba(255, 255, 255, 0));
+    z-index: 20;
+
+    display: flex;              /* 🔹 flex 컨테이너로 만들기 */
+    flex-direction: column;     /* 위아래로 쌓기 (h1, h2) */
+    justify-content: center;    /* 🔹 세로 가운데 정렬 */
+    align-items: center;        /* 🔹 가로 가운데 정렬 */
+}
+
+.top-box h1 {
+    margin: 0;
+    padding: 0;
+    font-size: clamp(24px, 4vw, 60px);
+    color:#000000;
+    text-align: center;
+}
+
+.top-box h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    font-size: clamp(14px, 2vw, 32px);
+    color:#000000;
+    text-align: center;
+}
+
+/* 아래 고정 푸터 */
+.bottom-box {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 15%;
+    background: linear-gradient(to top, rgba(104, 104, 104, 0.5), rgba(255, 255, 255, 0));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 컨트롤 박스 스타일 */
+.bottom-box .controls {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 8px 12px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    font-family: system-ui;
+    font-size: 13px;
+}
+
+/* 가운데 SVG 영역 - 화면 전체를 쓰면서 가운데 정렬 */
+.stage-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;              /* 다시 전체 화면 기준 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    z-index: 0;                  /* 맨 뒤 */
+}
+
+/* SVG 자체는 예전처럼 전체에 맞게 */
+.stage {
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+    display: block;
+}
+
+/* 점(원) 스타일 */
+.hold-dot {
+    fill: rgb(0, 0, 0);
+    stroke: #fff;
+    stroke-width: 0;
+    transition: transform 0.15s ease, fill 0.15s ease, stroke-width 0.15s ease;
+}
+
+/* 선 스타일 */
+.attempt-line {
+    stroke: #000000;
+    stroke-width: 0.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    opacity: 0.5;
+    transition: stroke 0.15s ease, stroke-width 0.15s ease, opacity 0.15s ease;
+}
+
+.bottom-info {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #000;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px 10px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    min-width: 220px;
+    text-align: center;
+}
+
+.highlight {
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.15));
+}
+
+.attempt-line.highlight {
+    stroke: #ff5a2f;
+    stroke-width: 1.4;
+    opacity: 1;
+}
+
+.hold-dot.highlight {
+    fill: #ff5a2f;
+    stroke: #ffffff;
+    stroke-width: 1;
+    transform: scale(2.2);
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.tooltip {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 12px;
+    color: #111;
+    pointer-events: none;
+    z-index: 999;
+    line-height: 1.4;
+}
